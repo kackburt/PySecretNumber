@@ -1,9 +1,11 @@
 
+#-*- coding: utf-8 -*-
+
 # GUESS THE SECRET NUMBERS
 
 # Varibles:
 secret = 3
-guess = int(raw_input("Geben Sie Ihren Vorschlag fuer die gesuchte Zahl ein: "))
+guess = int(raw_input("Geben Sie Ihren Vorschlag für die gesuchte Zahl ein: "))
 
 # The Game:
 if guess != secret:
