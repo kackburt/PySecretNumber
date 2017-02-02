@@ -17,16 +17,13 @@ secret = random.randint(a,b)
 
 # The Game:
 guess = None
-currenttry = 1
 
-while guess != secret and currenttry <= maxtry:
-    print("Das ist ihr " + str(currenttry) + " Versuch von " + str(maxtry) + " Versuchen.")
+for i in range(3):
+    print("Das ist ihr " + str(i+1) + " Versuch von " + str(maxtry) + " Versuchen.")
     guess = int(raw_input("Geben Sie Ihren Vorschlag für die gesuchte Zahl ein: "))
     if guess != secret:
-        currenttry += 1  # selber wie 'currentry = currenttry + 1'
         print("Leider falsch! Sie haben die gesuchte Zahl nicht erraten.")
     else:
         print("Volltreffer! Sie haben die gesuchte Zahl gefunden!")
-
-if guess != secret:
-    print "Sie haben die maximale Anzahl an Versuchen aufgebraucht."
+        break
+print("Sie haben die maximale Anzahl an Versuchen aufgebraucht. Das Spiel ist zu Ende!")
