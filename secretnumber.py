@@ -2,31 +2,60 @@
 #-*- coding: utf-8 -*-
 import random
 
-# GUESS THE SECRET NUMBERS
+# GUESS THE SECRET NUMBER v2
 
-# Varibles:
-maxtry = 3
-a = 1
-b = 9
-secret = random.randint(a,b)
+def setsecretnumberbetween(a,b):
+    result = random.randint(a,b)
+    return result
 
-# Leerzeichen entfernen: .strip() am Ende von einem String z.B. raw_input("Testeingabe ohne Abstand dank strip").strip()
+def main():
+    print("###################################################")
+    print("## Welcome to 'The Finding Of The Secret Number' ##")
+    print("###################################################\n")
+    maxtries = None
+    while maxtries is None:
+        try:
+            maxtries = int(raw_input("Enter a number of max try's: "))
+        except ValueError:
+            print("You didn't enter an integer number, please try again.")
 
-# for-loop: über einen definierten Bereich läuft die schleife
-# while-loop: laufen so lange bis eine Bedingung erfüllt ist
+    inputa = None
+    while inputa is None:
+        try:
+            inputa = int(raw_input("The secret number should be in the range FROM: "))
+        except ValueError:
+            print("You didn't enter an integer number, please try again.")
 
-# The Game:
-guess = None
-currenttry = 1
+    inputb = None
+    while inputb is None:
+        try:
+            inputb = int(raw_input("The secret number should be in the range TO: "))
+        except ValueError:
+            print("You didn't enter an integer number, please try again.")
 
-while guess != secret and currenttry <= maxtry:
-    print("Das ist ihr " + str(currenttry) + " Versuch von " + str(maxtry) + " Versuchen.")
-    guess = int(raw_input("Geben Sie Ihren Vorschlag für die gesuchte Zahl ein: "))
+    guess = None
+    currenttry = 1
+
+    secret = setsecretnumberbetween(inputa, inputb)
+
+    while guess != secret and currenttry <= maxtries:
+        print("This is try " + str(currenttry) + " of a total of " + str(maxtries) + " tries.")
+        guess = int(raw_input("Enter your guess of the secret number: "))
+        if guess != secret:
+            currenttry += 1  # selber wie 'currentry = currenttry + 1'
+            print("Sorry you missed! That was a wrong guess.\n")
+        else:
+            print("STRIKE! You found the the secret number '%i'.\n" % secret)
+            print("################")
+            print("## Game Over. ##")
+            print("################")
+
     if guess != secret:
-        currenttry += 1  # selber wie 'currentry = currenttry + 1'
-        print("Leider falsch! Sie haben die gesuchte Zahl nicht erraten.")
-    else:
-        print("Volltreffer! Sie haben die gesuchte Zahl gefunden!")
+        print("You've reached the max tries limit of %i.\n" % maxtries)
+        print("################")
+        print("## Game Over. ##")
+        print("################")
 
-if guess != secret:
-    print "Sie haben die maximale Anzahl an Versuchen aufgebraucht."
+
+if __name__ == '__main__':
+    main()
